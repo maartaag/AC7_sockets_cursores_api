@@ -1,4 +1,4 @@
-# Pisarra Colaborativa en Temps Real
+# Clicks Colaboratius en Temps Real
 
 Projecte que permet a múltiples usuaris connectar-se a una pisarra compartida, veure els cursors dels altres en temps real i el nombre d'usuaris.
 
@@ -17,7 +17,7 @@ Projecte que permet a múltiples usuaris connectar-se a una pisarra compartida, 
 
 ```bash
 git clone https://github.com/maartaag/AC7_sockets_cursores_api.git
-cd pisarra-backen
+cd AC7_sockets_cursores_api
 ```
 
 2. Instal·lar dependencies
@@ -36,7 +36,7 @@ npm run dev
 
 ```bash
 git clone https://github.com/maartaag/AC7_sockets_cursores_astro.git
-cd pisarra-backen
+cd AC7_sockets_cursores_astro
 ```
 
 2. Instal·lar dependencies
