@@ -1,6 +1,6 @@
 # Pisarra Colaborativa en Temps Real
 
-Projecte que permet a múltiples usuaris connectar-se a una pisarra compartida, veure els cursors dels altres en temps real i interactuar amb l’aplicació des del navegador.
+Projecte que permet a múltiples usuaris connectar-se a una pisarra compartida, veure els cursors dels altres en temps real i el nombre d'usuaris.
 
 ---
 
@@ -8,8 +8,6 @@ Projecte que permet a múltiples usuaris connectar-se a una pisarra compartida, 
 
 - **Servidor (backend)**: [https://github.com/maartaag/AC7_sockets_cursores_api](servidor)
 - **Client (frontend)**: [https://github.com/maartaag/AC7_sockets_cursores_astro](client)
-
-> Reemplaça els enllaços amb els teus repositoris reals.
 
 ---
 
