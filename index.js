@@ -23,7 +23,11 @@ io.on("connection", (socket) => {
     console.log("a user connected, " + algo);
     addUser(socket, algo);
     sendUsersConnectedList();
-    io.emit("chat:connected", getSpecificPerson(socket.id));
+    io.emit("user:connected", {
+      id: socket.id,
+      ...usersConectados[socket.id],
+    });
+    io.emit("users:init", usersConectados);
   });
 
   socket.on("disconnect", () => {
@@ -32,7 +36,8 @@ io.on("connection", (socket) => {
     if (nom === undefined) {
       console.log("user disconnected en undefined");
     } else {
-      io.emit("chat:disconnected", nom);
+      io.emit("user:disconnected", nom);
+      socket.broadcast.emit("user:remove", socket.id);
       console.log("user disconnected en " + nom);
     }
 
@@ -52,7 +57,7 @@ io.on("connection", (socket) => {
   // movimiento del cursor
   socket.on("cursor:move", (data) => {
     console.log("cursor:move", getSpecificPerson(socket.id), data);
-    socket.broadcast.emit("cursor:move", {
+    io.emit("cursor:move", {
       id: socket.id,
       ...data,
     });
@@ -77,9 +82,12 @@ function getSpecificPerson(socketId) {
   console.log(usersConectados[socketId]);
   return usersConectados[socketId];
 }
-function addUser(socket, algo) {
-  listaPersonas[socket.id] = algo + "-" + new Date().toLocaleDateString();
-  usersConectados[socket.id] = algo;
+function addUser(socket, nom) {
+  listaPersonas[socket.id] = nom + "-" + new Date().toLocaleDateString();
+  usersConectados[socket.id] = {
+    nombre: nom,
+    color: getRandomColor(),
+  };
 }
 function userDisconnect(socket) {
   listaPersonas[socket.id] +=
@@ -88,4 +96,7 @@ function userDisconnect(socket) {
 }
 function sendUsersConnectedList() {
   io.emit("users:list", Object.values(usersConectados));
+}
+function getRandomColor() {
+  return "#" + Math.floor(Math.random() * 16777215).toString(16);
 }
