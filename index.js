@@ -2,7 +2,7 @@ import express from "express";
 import { createServer, get } from "node:http";
 import { Server } from "socket.io";
 import cors from "cors";
-import { send } from "node:process";
+// import { send } from "node:process";
 
 const app = express();
 const server = createServer(app);
@@ -14,9 +14,9 @@ const io = new Server(server, {
   },
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello World!");
+// });
 
 io.on("connection", (socket) => {
   socket.on("connected", (algo) => {
